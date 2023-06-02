@@ -1,0 +1,11 @@
+{
+	"id": "Unknown",
+	"name": "『T?he Un?know??n】",
+	"description": "",
+	"features": {
+		"color": "9cf0a4",
+
+		"select_menu_scene": "Slugcat_Unknown",
+		"select_menu_scene_ascended": "Ghost_Unknown"
+	}
+}

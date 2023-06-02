@@ -1,0 +1,9 @@
+﻿{
+	"id": "dv.theunknown",
+	"name": "「The U??nkno?wn』",
+	"version": "0.1.0",
+	"authors": "Nuclear Pasta",
+	"description": "",
+	"requirements": [ "slime-cubed.slugbase" ],
+	"requirements_names": [ "SlugBase" ]
+}
