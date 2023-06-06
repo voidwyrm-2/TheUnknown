@@ -52,7 +52,7 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                         var room = self.room;
                         var pos = self.mainBodyChunk.pos;
                         var color = self.ShortCutColor();
-                        room.AddObject(new Explosion(room, self, pos, 7, 250f, 6.2f, 42f, 10000f, 0.75f, self, 0.7f, 160f, 1f));
+                        room.AddObject(new Explosion(room, self, pos, 7, 250f, 6.2f, 100f, 42f, 0.75f, self, 0.7f, 160f, 1f));
                         room.AddObject(new Explosion.ExplosionLight(pos, 280f, 1f, 7, color));
                         room.AddObject(new Explosion.ExplosionLight(pos, 230f, 1f, 3, new Color(1f, 1f, 1f)));
                         room.AddObject(new ExplosionSpikes(room, pos, 14, 30f, 9f, 7f, 170f, color));
