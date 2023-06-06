@@ -12,24 +12,43 @@ using BepInEx.Logging;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using IL;
+using NuclearPasta.TheUnknown.Player_Hooks;
 //using static UnityEngine.Input;
 
 namespace NuclearPasta.TheUnknown
 {
     [BepInPlugin(MOD_ID, "The Unknown", "0.1.0")]
-    class Plugin : BaseUnityPlugin
+    public class TheUnknownMod : BaseUnityPlugin
     {
         private const string MOD_ID = "dv.theunknown";
 
         static SlugcatStats.Name MySlugcat = new SlugcatStats.Name("Unknown");
 
+        
         // Add hooks
         public void OnEnable()
         {
+            PlayerFlight.OnEnable();
+            PlayerExplode.OnEnable();
+            PlayerAutoParry.OnEnable();
+            GotAwayAgain.OnEnable();
             //On.RainWorld.OnModsInit += Extras.WrapInit(LoadResources);
 
             // Put your custom hooks here!
             //On.Player.AerobicIncrease += Player_Ribulet;
+            On.Player.Update += Player_Update;
+            
+        }
+
+        
+
+        private void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
+        {
+            orig(self, eu);
+            if(self.IsJollyPlayer)
+            {
+            
+            }
         }
 
         /*

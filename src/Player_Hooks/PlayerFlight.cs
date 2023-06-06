@@ -15,20 +15,23 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
     {
         static SlugcatStats.Name MySlugcat = new SlugcatStats.Name("Unknown");
 
-        public void OnEnable()
+        public static void OnEnable()
         {
+            /*
             On.Player.checkInput += Player_FlyUp;
             On.Player.checkInput += Player_FlyUpLess;
-            //On.Player.checkInput += Player_FlyUp;
+            On.Player.checkInput += Player_FlyUp;
             On.Player.checkInput += Player_FlyRight;
             On.Player.checkInput += Player_FlyLeft;
             On.Player.checkInput += Player_FlyDown;
             On.Player.checkInput += Player_FlyUpvelxy1;
             On.Player.checkInput += Player_FlyUpvelxy2;
             On.Player.checkInput += Player_FlyUpvelxy3;
+            */
+            On.Player.checkInput += Player_Flight;
         }
 
-        private void Player_FlyUp(On.Player.orig_checkInput orig, Player self)
+        private static void Player_Flight(On.Player.orig_checkInput orig, Player self)
         {
             orig(self);
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
@@ -42,13 +45,7 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
-        }
 
-
-
-        private void Player_FlyUpLess(On.Player.orig_checkInput orig, Player self)
-        {
-            orig(self);
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
             {
                 if (Input.GetKey(KeyCode.LeftControl))
@@ -60,12 +57,8 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
-        }
 
         /*
-        private void Player_FlyUp(On.Player.orig_checkInput orig, Player self)
-        {
-            orig(self);
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
             {
                 if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.W))
@@ -77,12 +70,8 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
-        }
         */
 
-        private void Player_FlyRight(On.Player.orig_checkInput orig, Player self)
-        {
-            orig(self);
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
             {
                 if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.D))
@@ -94,11 +83,7 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
-        }
 
-        private void Player_FlyLeft(On.Player.orig_checkInput orig, Player self)
-        {
-            orig(self);
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
             {
                 if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.A))
@@ -110,11 +95,7 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
-        }
 
-        private void Player_FlyDown(On.Player.orig_checkInput orig, Player self)
-        {
-            orig(self);
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
             {
                 if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.S))
@@ -126,11 +107,7 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
-        }
 
-        private void Player_FlyUpvelxy1(On.Player.orig_checkInput orig, Player self)
-        {
-            orig(self);
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
             {
                 if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.S))
@@ -142,10 +119,7 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
-        }
-        private void Player_FlyUpvelxy2(On.Player.orig_checkInput orig, Player self)
-        {
-            orig(self);
+
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
             {
                 if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.A))
@@ -157,10 +131,7 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
-        }
-        private void Player_FlyUpvelxy3(On.Player.orig_checkInput orig, Player self)
-        {
-            orig(self);
+
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == MoreSlugcatsEnums.AbstractObjectType.SingularityBomb)
             {
                 if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.D))
@@ -172,6 +143,7 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                     return;
                 }
             }
+
         }
 
     }

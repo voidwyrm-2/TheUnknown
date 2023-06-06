@@ -15,23 +15,40 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
     {
         static SlugcatStats.Name MySlugcat = new SlugcatStats.Name("Unknown");
 
-        public void OnEnable()
+        public static void OnEnable()
         {
             On.Player.checkInput += Player_BootlegAscension;
-            //On.Player.Die += Player_SelfDestruct;
+            On.Player.Die += Player_SelfDestruct;
         }
 
-        /*
-        private void Player_SelfDestruct(On.Player.orig_Die orig, Player self)
+        private static void Player_SelfDestruct(On.Player.orig_Die orig, Player self)
         {
+
             orig(self);
+
             bool wasDead = self.dead;
+
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == AbstractPhysicalObject.AbstractObjectType.ScavengerBomb)
             {
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
-                    if (!wasDead && self.dead)
+                    if (!wasDead)
                     {
+                        if (!self.dead)
+                        {
+                            self.Die();
+                        }
+                    }
+                }
+            }
+
+            if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == AbstractPhysicalObject.AbstractObjectType.ScavengerBomb)
+            {
+                if (wasDead)
+                {
+                    if (self.dead)
+                    {
+                        // Adapted from ScavengerBomb.Explode
                         var room = self.room;
                         var pos = self.mainBodyChunk.pos;
                         var color = self.ShortCutColor();
@@ -44,14 +61,13 @@ namespace NuclearPasta.TheUnknown.Player_Hooks
                         room.ScreenMovement(pos, default, 1.3f);
                         room.PlaySound(SoundID.Bomb_Explode, pos);
                         room.InGameNoise(new Noise.InGameNoise(pos, 9000f, self, 1f));
-                        self.Die();
+                        self.objectInStomach.realizedObject.RemoveFromRoom();
                     }
                 }
             }
         }
-        */
 
-        private void Player_BootlegAscension(On.Player.orig_checkInput orig, Player self)
+        private static void Player_BootlegAscension(On.Player.orig_checkInput orig, Player self)
         {
             orig(self);
             if (self.SlugCatClass == MySlugcat && self.objectInStomach?.type == AbstractPhysicalObject.AbstractObjectType.ScavengerBomb)
