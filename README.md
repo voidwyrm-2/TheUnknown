@@ -1,3 +1,8 @@
+# This mod is no longer being worked on
+~~So sad he died of Ligma~~
+
+
+
 A extremely beta and wip and just completely broken scug that can do things when it has stuff in it's stomach
 I also still need to add it's actual stats
 
